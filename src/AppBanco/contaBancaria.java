@@ -1,12 +1,12 @@
 package AppBanco;
 
-public abstract class contaBancaria {
+public abstract class ContaBancaria implements Imprimivel {
 	private long numeroConta;
 	private double saldo;
 	
 	
 	//add the constructor
-	public contaBancaria(long numeroConta, double saldo) {
+	public ContaBancaria(long numeroConta, double saldo) {
 		super();
 		this.numeroConta = numeroConta;
 		this.saldo = saldo;
@@ -36,5 +36,15 @@ public abstract class contaBancaria {
     
     public void depositar(double valor){
         saldo += valor;
+    }
+    
+    //abstract public void mostrarDados();
+    
+    public void transferir(double valor, ContaBancaria origem, ContaBancaria destino) {
+    	// sacar o valor da conta de origem
+    	origem.sacar(valor);
+    	
+    	// depositar o valor na conta de destino
+    	destino.depositar(valor);
     }
 }

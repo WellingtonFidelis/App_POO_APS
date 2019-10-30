@@ -1,11 +1,11 @@
 package AppBanco;
 
-public class contaPoupança extends contaBancaria {
+public class ContaPoupança extends ContaBancaria {
 	
 	private double limite;
 
 	//add the constructor
-	public contaPoupança(long numeroConta, double saldo, double limite) {
+	public ContaPoupança(long numeroConta, double saldo, double limite) {
 		super(numeroConta, saldo);
 		// TODO Auto-generated constructor stub
 	}
@@ -19,7 +19,7 @@ public class contaPoupança extends contaBancaria {
 		this.limite = limite;
 	}
 	
-	//Override of methods from contaBancaria
+	//Override of methods from ContaBancaria
 	@Override
 	public void sacar(double valor) {
 		if (valor < getSaldo()) {
@@ -28,6 +28,12 @@ public class contaPoupança extends contaBancaria {
 			limite = limite - valor;
 		}
 	}
-	
 
+	@Override
+	public void mostrarDados() {
+		System.out.println(getNumeroConta() + "\t" +
+				getSaldo() + "\t" +
+				getLimite()); 
+
+	}
 }

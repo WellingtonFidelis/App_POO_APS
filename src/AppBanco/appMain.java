@@ -1,10 +1,15 @@
 package AppBanco;
 
-public class appMain {
+public class AppMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//
 
+	}
+	
+	public static void imprimir (Imprimivel p) {
+		// chamada do m�todo polimorfico
+		p.mostrarDados();
 	}
 
 }
