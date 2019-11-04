@@ -1,13 +1,13 @@
 package AppBanco;
 
-public class contaCorrente extends contaBancaria {
+public class ContaCorrente extends ContaBancaria {
 	
 	private double taxaDeOperacao = 0.05;
 	
 	//add the constructor
-	public contaCorrente(long numeroConta, double saldo, double taxaDeOperacao) {
+	public ContaCorrente(long numeroConta, double saldo) {
 		super(numeroConta, saldo);
-		// TODO Auto-generated constructor stub
+		// TODO Verify the tax of operation
 	}
 	
 	//getters and setters
@@ -22,12 +22,12 @@ public class contaCorrente extends contaBancaria {
 	// Override of methods from contaBancaria
 	@Override
 	public void sacar (double valor) {
-		//não sei se está certo esse cálculo. I don't know if it is right this measure.
+		//nï¿½o sei se estï¿½ certo esse cï¿½lculo. I don't know if it is right this measure.
 		setSaldo(getSaldo() - (valor + (taxaDeOperacao*valor)));
 	}
 	
 	public void depositar (double valor) {
-		//não sei se está certo esse cálculo. I don't know if it is right this measure.
+		//nï¿½o sei se estï¿½ certo esse cï¿½lculo. I don't know if it is right this measure.
 		setSaldo(getSaldo() + (valor - (taxaDeOperacao*valor)));
 	}
 }

@@ -1,12 +1,12 @@
 package AppBanco;
 
-public abstract class contaBancaria {
+public abstract class ContaBancaria {
 	private long numeroConta;
 	private double saldo;
 	
 	
 	//add the constructor
-	public contaBancaria(long numeroConta, double saldo) {
+	public ContaBancaria(long numeroConta, double saldo) {
 		super();
 		this.numeroConta = numeroConta;
 		this.saldo = saldo;

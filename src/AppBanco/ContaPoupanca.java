@@ -1,11 +1,11 @@
 package AppBanco;
 
-public class contaPoupança extends contaBancaria {
+public class ContaPoupanca extends ContaBancaria {
 	
 	private double limite;
 
 	//add the constructor
-	public contaPoupança(long numeroConta, double saldo, double limite) {
+	public ContaPoupanca(long numeroConta, double saldo, double limite) {
 		super(numeroConta, saldo);
 		// TODO Auto-generated constructor stub
 	}
