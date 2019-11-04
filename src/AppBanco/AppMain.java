@@ -2,6 +2,7 @@ package AppBanco;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class AppMain {
 
@@ -105,24 +106,32 @@ public class AppMain {
 		}
 	}
 	public static void listarContas() {
-	double total = 0;
-	System.out.println("=======================");
-	System.out.println("CONTA:	SALDO:	LIMITE:");
-	System.out.println("=======================");
-	ordenarLista();
-	for (ContaBancaria conta : lista) {
-		if (!conta.equals(null)) {
-			//				if (conta instanceof Corrente) {
-			//					Corrente c = (Corrente) conta;
-			//					System.out.println(c.getNumero() + "\t" +
-			//									   c.getSaldo() + "\t" +
-			//									   c.getLimite()); 
-			//				}
-			/* poder do polimorfismo, em tempo de execução o objeto se comporte como outro objeto
-			 * */	
-			imprimir(conta);	
-			total += conta.getSaldo();
+		double total = 0;
+		System.out.println("=======================");
+		System.out.println("CONTA:	SALDO:	LIMITE:");
+		System.out.println("=======================");
+		ordenarLista();
+		for (ContaBancaria conta : lista) {
+			if (!conta.equals(null)) {
+				//				if (conta instanceof Corrente) {
+				//					Corrente c = (Corrente) conta;
+				//					System.out.println(c.getNumero() + "\t" +
+				//									   c.getSaldo() + "\t" +
+				//									   c.getLimite()); 
+				//				}
+				/* poder do polimorfismo, em tempo de execução o objeto se comporte como outro objeto
+				 * */	
+				imprimir(conta);	
+				total += conta.getSaldo();
 			}
+		}
+		System.out.println("Total:........" + total);
+		System.out.println("=======================");
 	}
+	public static void imprimir(Imprimivel p) {
+		p.mostrarDados();
+	}
+	public static void ordenarLista() {
+		Collections.sort(lista);
 	}
 }

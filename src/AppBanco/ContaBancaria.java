@@ -1,10 +1,7 @@
 package AppBanco;
 
-<<<<<<< HEAD:src/AppBanco/ContaBancaria.java
-public abstract class ContaBancaria {
-=======
-public abstract class ContaBancaria implements Imprimivel {
->>>>>>> ddcc16e857ff558b13474e7035b40471c61b5ad6:src/AppBanco/contaBancaria.java
+public abstract class ContaBancaria implements Comparable<ContaBancaria>, Imprimivel {
+	
 	private long numeroConta;
 	private double saldo;
 	
@@ -43,6 +40,17 @@ public abstract class ContaBancaria implements Imprimivel {
     }
     
     //abstract public void mostrarDados();
+    
+    @Override
+    public int compareTo(ContaBancaria o) {
+    	if (this.saldo > o.getSaldo()) {
+    		return -1;
+    	}
+    	if (this.saldo < o.getSaldo()) {
+    		return 1;
+    	}
+    	return 0;
+    }
     
     public void transferir(double valor, ContaBancaria origem, ContaBancaria destino) {
     	// sacar o valor da conta de origem
