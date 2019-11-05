@@ -6,5 +6,5 @@ public abstract class Relatorio implements Imprimivel {
 	}
 	
 	/* tive que colocar a classe Relatorio como abstract para poder implementar a interface Imprimivel
-	 * não sei se está correto! */
+	 * nao sei se esta correto! */
 }

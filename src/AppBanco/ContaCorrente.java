@@ -2,7 +2,7 @@ package AppBanco;
 
 public class ContaCorrente extends ContaBancaria {
 	
-	private double taxaDeOperacao = 0.05;
+	private double taxaDeOperacao = 0.1;
 	
 	//add the constructor
 	public ContaCorrente(long numeroConta, double saldo) {	

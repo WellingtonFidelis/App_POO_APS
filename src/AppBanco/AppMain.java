@@ -18,13 +18,14 @@ public class AppMain {
 		int op;
 		do {
 			System.out.println("*** MENU PRINCIPAL ***");
-			System.out.println("1-Incluir Conta Corrente");
-			System.out.println("2-Incluir Conta Poupança");
-			System.out.println("3-Excluir Conta");
-			System.out.println("4-Sacar");
-			System.out.println("5-Depositar");
-			System.out.println("6-Listar Contas em Ordem Crescente de Saldo");
-			System.out.println("7-Sair");
+			System.out.println("1 - Incluir Conta Corrente");
+			System.out.println("2 - Incluir Conta Poupança");
+			System.out.println("3 - Excluir Conta");
+			System.out.println("4 - Sacar");
+			System.out.println("5 - Depositar");
+			System.out.println("6 - Transferir");
+			System.out.println("7 - Listar Contas em Ordem Crescente de Saldo");
+			System.out.println("8 - Sair");
 			System.out.println("Digite sua opção: ");
 			op = tecla.nextInt();
 			switch (op) {
@@ -33,10 +34,11 @@ public class AppMain {
 			case 3: excluirConta();	break;
 			case 4:	sacarValor(); break;
 			case 5:	depositarValor(); break;
-			case 6:	listarContas();	break;
-			case 7:	break;
+			case 6: transferir(); break;
+			case 7:	listarContas();	break;
+			case 8:	break;
 			}
-		} while (op != 7);
+		} while (op != 8);
 	}
 
 	private static void criarContaPoupaca() {
@@ -55,7 +57,7 @@ public class AppMain {
 	private static void criarContaCorrente() {
 		// input data
 		System.out.println("Digite o número da conta:");
-		long numeroConta = tecla.nextInt();
+		long numeroConta = tecla.nextLong();
 		System.out.println("Digite o saldo da conta:");
 		double saldo = tecla.nextDouble();
 		// add the new object and input in the list
@@ -66,7 +68,7 @@ public class AppMain {
 	public static void excluirConta() { 
 		//Entrada
 		System.out.println("Digite o número da conta:");
-		long numeroConta = tecla.nextInt();
+		long numeroConta = tecla.nextLong();
 
 		//Procurar a conta na lista para exclusão
 		for (ContaBancaria algumaConta : lista) {
@@ -80,7 +82,7 @@ public class AppMain {
 	public static void sacarValor() {
 		//Entrada
 		System.out.println("Digite o número da conta:");
-		int numeroConta = tecla.nextInt();
+		long numeroConta = tecla.nextLong();
 		System.out.println("Digite o valor do saque:");
 		double valor = tecla.nextDouble();
 		//Procurar a conta na lista para efetuar o saque
@@ -94,8 +96,8 @@ public class AppMain {
 	public static void depositarValor() {
 		//Entrada
 		System.out.println("Digite o número da conta:");
-		int numeroConta = tecla.nextInt();
-		System.out.println("Digite o valor do saque:");
+		long numeroConta = tecla.nextLong();
+		System.out.println("Digite o valor do deposito:");
 		double valor = tecla.nextDouble();
 		//Procurar a conta na lista para efetuar o deposito
 		for (ContaBancaria conta : lista) {
@@ -133,5 +135,28 @@ public class AppMain {
 	}
 	public static void ordenarLista() {
 		Collections.sort(lista);
+	}
+	public static void transferir() {
+		// input data
+		System.out.println("Digite o numero da conta de origem:");
+		long numeroContaOrigem = tecla.nextLong();
+		System.out.println("Digite o numero da conta de destino:");
+		long numeroContaDestino = tecla.nextLong();
+		System.out.println("Digite o valor:");
+		double valor = tecla.nextDouble();
+		// search in list to find the origin account and sacar()
+		for (ContaBancaria conta : lista) {
+			if (conta.getNumeroConta() == numeroContaOrigem) {
+				conta.sacar(valor);
+				break;
+			}
+		}
+		// search in list to find the origin account and depositar()
+		for (ContaBancaria conta : lista) {
+			if (conta.getNumeroConta() == numeroContaDestino) {
+				conta.depositar(valor);
+				break;
+			}
+		}
 	}
 }
