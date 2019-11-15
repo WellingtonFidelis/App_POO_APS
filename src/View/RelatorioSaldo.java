@@ -20,6 +20,9 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
      * Creates new form Relatorio
      */
 	
+	ArrayList<ContaBancaria> contas = Banco.contas;
+	Banco banco = new Banco();
+	
     public RelatorioSaldo() {
         initComponents();
         
@@ -33,9 +36,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     
     
     public void carregarContas(){
-            	
-    	ArrayList<ContaBancaria> contas = Banco.contas; 
-    	
+            	    	
     	for (int i = 0; i < contas.size(); i++) {
     		jComboBox1.addItem(contas.get(i).getNumeroConta());
     	}
@@ -167,9 +168,13 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    //to do
-
+    
+    		Long numeroConta = Long.parseLong(jComboBox1.getSelectedItem().toString());
+    		
+    		banco.procurar(numeroConta);		
+    		//jTextArea1.append();   mostra informações no text area
+    	
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

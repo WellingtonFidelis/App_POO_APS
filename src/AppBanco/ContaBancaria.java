@@ -1,6 +1,6 @@
 package AppBanco;
 
-public class ContaBancaria implements Comparable<ContaBancaria>, Imprimivel {
+public abstract class ContaBancaria implements Comparable<ContaBancaria>, Imprimivel {
 	
 	private long numeroConta;
 	private double saldo;
@@ -64,10 +64,4 @@ public class ContaBancaria implements Comparable<ContaBancaria>, Imprimivel {
     	destino.depositar(valor);
     }
 
-	@Override
-	public void mostrarDados() {
-		
-
-		
-	}
 }
