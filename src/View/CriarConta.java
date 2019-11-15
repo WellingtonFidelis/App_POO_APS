@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import AppBanco.Banco;
 import AppBanco.ContaBancaria;
+import AppBanco.ContaCorrente;
+import AppBanco.ContaPoupanca;
 
 /**
  *
@@ -19,6 +21,9 @@ public class CriarConta extends javax.swing.JInternalFrame {
     /**
      * Creates new form CriarConta
      */
+	
+	Banco banco = new Banco();
+	
     public CriarConta() {
         initComponents();
  
@@ -173,15 +178,26 @@ public class CriarConta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	
+    	    	
     	long numeroConta = Long.parseLong(jTextField1.getText());
     	double saldo = Double.parseDouble(jTextField2.getText());
+    	double terceiroAtributo = Double.parseDouble(jTextField3.getText());
     	
-    	ContaBancaria conta = new ContaBancaria(numeroConta, saldo);
+    	if(jRadioButton1.isSelected()) {
     	
-    	Banco banco = new Banco();
-    	banco.inserir(conta);
+    		ContaCorrente contaCorrente = new ContaCorrente(numeroConta, saldo, terceiroAtributo);    
+     		contaCorrente.setTaxaDeOperacao(terceiroAtributo);
+    		banco.inserir(contaCorrente);
+    		
+    	} else if (jRadioButton2.isSelected()) {
+    		
+    		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, saldo, terceiroAtributo);
+    		contaPoupanca.setLimite(terceiroAtributo);
+    		banco.inserir(contaPoupanca);
+    		
+    	}
     	
+    	JOptionPane.showMessageDialog(null, "Conta cadastrada com sucesso", "Mensagem", getDefaultCloseOperation(), frameIcon);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

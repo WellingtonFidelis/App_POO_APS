@@ -13,6 +13,10 @@ public class ContaBancaria implements Comparable<ContaBancaria>, Imprimivel {
 		this.saldo = saldo;
 	}
 
+	public ContaBancaria(ContaBancaria contaBancaria) {
+		// TODO Auto-generated constructor stub
+	}
+
 	// getters and setters
 	public long getNumeroConta() {
 		return numeroConta;
