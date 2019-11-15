@@ -7,6 +7,9 @@ package View;
 
 import javax.swing.JOptionPane;
 
+import AppBanco.Banco;
+import AppBanco.ContaBancaria;
+
 /**
  *
  * @author Jorge
@@ -170,7 +173,15 @@ public class CriarConta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // to do        
+    	
+    	long numeroConta = Long.parseLong(jTextField1.getText());
+    	double saldo = Double.parseDouble(jTextField2.getText());
+    	
+    	ContaBancaria conta = new ContaBancaria(numeroConta, saldo);
+    	
+    	Banco banco = new Banco();
+    	banco.inserir(conta);
+    	
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
