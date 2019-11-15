@@ -7,8 +7,6 @@ package View;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import AppBanco.Banco;
 import AppBanco.ContaBancaria;
 
@@ -21,8 +19,6 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     /**
      * Creates new form Relatorio
      */
-	
-	//Banco banco = new Banco();
 	
     public RelatorioSaldo() {
         initComponents();
@@ -38,11 +34,12 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     
     public void carregarContas(){
             	
-    	ArrayList<ContaBancaria> contas = Banco.contas;
+    	ArrayList<ContaBancaria> contas = Banco.contas; 
     	
-    	for(int i = 0; i < contas.size(); i++) {
-    		//jTextArea1 = contas.get(i).mostrarDados();
+    	for (int i = 0; i < contas.size(); i++) {
+    		jComboBox1.addItem(contas.get(i).getNumeroConta());
     	}
+
     }
     
     public void exibirContas(boolean valor){
@@ -91,6 +88,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButton2.setSelected(true);
         jRadioButton2.setText("NAO");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +177,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox<Long> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
