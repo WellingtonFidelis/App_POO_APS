@@ -5,12 +5,28 @@ import java.util.ArrayList;
 public class Banco {
 	
 	public Banco() { } 
-
-	ArrayList<ContaBancaria> contas = new ArrayList<>();
+	
+	public static ArrayList<ContaBancaria> contas = new ArrayList<>();
 
 	public void inserir(ContaBancaria contaBancaria) {
 		
 		contas.add(contaBancaria);
+		
+	}
+	
+	public void remover(Long numero) {
+		
+		for(int i = 0; i < contas.size(); i++) {
+			
+			if(contas.get(i).getNumeroConta() == numero) {
+				
+				contas.remove(i);
+			}
+		}
+		
+	}
+	
+	public void procurar(Long numero) {
 		
 	}
 }

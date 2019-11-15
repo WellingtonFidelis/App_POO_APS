@@ -197,6 +197,8 @@ public class CriarConta extends javax.swing.JInternalFrame {
     		
     	}
     	
+    	limpaCampos();
+    	
     	JOptionPane.showMessageDialog(null, "Conta cadastrada com sucesso", "Mensagem", getDefaultCloseOperation(), frameIcon);
     }//GEN-LAST:event_jButton1ActionPerformed
 

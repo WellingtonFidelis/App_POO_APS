@@ -71,7 +71,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relatório");
+        jMenu2.setText("Relatorio");
         jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
@@ -162,7 +162,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenu2MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuSelected
        
         RelatorioSaldo objRelatorio = new RelatorioSaldo();        
-        objRelatorio.setTitle("Relatório de Contas");
+        objRelatorio.setTitle("Relatorio de Contas");
         objRelatorio.setVisible(true);
         this.add(objRelatorio);
         

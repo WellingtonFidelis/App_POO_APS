@@ -7,6 +7,8 @@ package View;
 
 import javax.swing.JOptionPane;
 
+import AppBanco.Banco;
+
 /**
  *
  * @author Jorge
@@ -16,8 +18,16 @@ public class RemoverConta extends javax.swing.JInternalFrame {
     /**
      * Creates new form RemoverConta
      */
+	
+	Banco banco = new Banco();
+	
     public RemoverConta() {
         initComponents();
+    }
+    
+    public void limpaCampos(){
+        jTextField1.setText("");
+        jTextField1.requestFocusInWindow();
     }
 
     /**
@@ -34,7 +44,7 @@ public class RemoverConta extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jLabel1.setText("Informe o número da conta:");
+        jLabel1.setText("Informe o numero da conta:");
 
         jButton1.setText("Remover");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +99,15 @@ public class RemoverConta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // To do      
+        
+    	Long numero = Long.parseLong(jTextField1.getText());
+    	
+    	banco.remover(numero);
+    	
+    	limpaCampos();
+    	
+    	JOptionPane.showMessageDialog(null, "Conta removida com sucesso", "Mensagem", getDefaultCloseOperation(), frameIcon);
+    	
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

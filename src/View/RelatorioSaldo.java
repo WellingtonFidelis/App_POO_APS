@@ -5,7 +5,12 @@
  */
 package View;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import AppBanco.Banco;
+import AppBanco.ContaBancaria;
 
 /**
  *
@@ -16,6 +21,9 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     /**
      * Creates new form Relatorio
      */
+	
+	//Banco banco = new Banco();
+	
     public RelatorioSaldo() {
         initComponents();
         
@@ -29,7 +37,12 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
     
     
     public void carregarContas(){
-        
+            	
+    	ArrayList<ContaBancaria> contas = Banco.contas;
+    	
+    	for(int i = 0; i < contas.size(); i++) {
+    		//jTextArea1 = contas.get(i).mostrarDados();
+    	}
     }
     
     public void exibirContas(boolean valor){
@@ -78,7 +91,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
             }
         });
 
-        jRadioButton2.setText("NÃO");
+        jRadioButton2.setText("NAO");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -157,8 +170,8 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        // To do
-        
+    //to do
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
