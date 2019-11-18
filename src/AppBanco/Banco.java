@@ -10,6 +10,7 @@ public class Banco {
 
 	public void inserir(ContaBancaria contaBancaria) {
 
+		//ADICIONA CONTA NO ARRAYLIST
 		contas.add(contaBancaria);
 
 	}
@@ -19,8 +20,9 @@ public class Banco {
 		boolean removeu = false;
 		try {
 
+			//VERIFICA SE O NUMERO DA CONTA ESTA NO ARRAYLIST E REMOVE
 			for(int i = 0; i < contas.size(); i++) {
-
+				
 				if(contas.get(i).getNumeroConta() == numero) {
 
 					contas.remove(i);
@@ -29,13 +31,15 @@ public class Banco {
 				}
 			}
 
+			//SE NAO REMOVEU NENHUMA CONTA CRIA UMA EXCECAO E CAI NO CATCH 
 			if(!removeu) {
 				
 				throw new Exception() ;
 			}
 
 		} catch (Exception e) {
-
+			
+			//CRIA UMA NOVA EXCECAO PARA CAIR NO CATCH DA CLASSE RemoverConta E EXIBIR MENSAGEM QUE A CONTA NAO EXISTE
 			throw new Exception() ;
 
 		} 
@@ -45,5 +49,6 @@ public class Banco {
 	// ***************ACHO QUE APÓS VARRER O ARRAY E FILTRAR AS CONTAS DESEJADAS É NECESSÁRIO CHAMAR mostrarDados()********************
 	public void procurar(Long numero) {
 
+		
 	}
 }

@@ -7,7 +7,6 @@ public class ContaPoupanca extends ContaBancaria {
 	//add the constructor
 	public ContaPoupanca(long numeroConta, double saldo, double limite) {
 		super(numeroConta, saldo);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//getters and setters

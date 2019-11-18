@@ -181,18 +181,25 @@ public class CriarConta extends javax.swing.JInternalFrame {
 
 		try {
 
+			//PEGA OS VALORES QUE SAO INSERIDOS NOS CAMPOS
 			long numeroConta = Long.parseLong(jTextField1.getText());
 			double saldo = Double.parseDouble(jTextField2.getText());
 			double terceiroAtributo = Double.parseDouble(jTextField3.getText());
 
+			//VERIFICA SE A CONTA CORRENTE ESTA SELECIONADA 
 			if(jRadioButton1.isSelected()) {
 
+				//CRIA UMA CONTA CORRENTE E SETA O VALOR DA TAXA 
 				ContaCorrente contaCorrente = new ContaCorrente(numeroConta, saldo, terceiroAtributo);    
 				contaCorrente.setTaxaDeOperacao(terceiroAtributo);
+				
+				//CHAMA A FUNCAO INSERIR NA CLASSE BANCO
 				banco.inserir(contaCorrente);
 
+				//VERIFICA SE CONTA POUPANCA ESTA SELECIONADA 
 			} else if (jRadioButton2.isSelected()) {
 
+				//CRIA UMA CONTA POUPANCA E SETA O VALOR DO LIMITE 
 				ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, saldo, terceiroAtributo);
 				contaPoupanca.setLimite(terceiroAtributo);
 				banco.inserir(contaPoupanca);
@@ -203,6 +210,7 @@ public class CriarConta extends javax.swing.JInternalFrame {
 
 			JOptionPane.showMessageDialog(null, "Conta cadastrada com sucesso", "Mensagem", getDefaultCloseOperation(), frameIcon);
 			
+			//CASO SEJA INSERIDO QUALQUER CARACTER DIFERENTE DE NUMERO EXIBE MENSAGEM 
 		} catch (NumberFormatException e) {
 
 			JOptionPane.showMessageDialog(null, "Os campos só permitem números", "Mensagem", getDefaultCloseOperation(), frameIcon);
