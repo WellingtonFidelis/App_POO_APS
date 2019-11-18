@@ -99,16 +99,23 @@ public class RemoverConta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    	Long numero = Long.parseLong(jTextField1.getText());
-    	
+         	
     	try {
+    		
+    		Long numero = Long.parseLong(jTextField1.getText());
     		
     		banco.remover(numero);
         	limpaCampos();
         	JOptionPane.showMessageDialog(null, "Conta removida com sucesso", "Mensagem", getDefaultCloseOperation(), frameIcon);
     		
-    	} catch (Exception e) {
+    	} 
+    	
+    	catch (NumberFormatException e) {
+    		
+    		JOptionPane.showMessageDialog(null, "Insira um número de conta válido", "Mensagem", getDefaultCloseOperation(), frameIcon);
+    	}
+    	
+    	catch (Exception e) {
     		
     		JOptionPane.showMessageDialog(null, "Conta inexistente", "Mensagem", getDefaultCloseOperation(), frameIcon);
     	}
