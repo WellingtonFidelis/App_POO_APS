@@ -7,6 +7,8 @@ package View;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import AppBanco.Banco;
 import AppBanco.ContaBancaria;
 
@@ -170,33 +172,51 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-		//VERIFICA SE O BOTAO SIM ESTA SELECIONADO 
-		if(jRadioButton1.isSelected()) {
+		try {
+			
+			//VERIFICA SE O BOTAO SIM ESTA SELECIONADO 
+			if(jRadioButton1.isSelected()) {
+
+				//VERIFICA SE EXISTE CONTA PARA SER SELECIONADA NA COMBO BOX
+				if(jComboBox1.getItemCount() != 0 ) {
+				
+					for(int i = 0; i < jComboBox1.getItemCount(); i++) {
+
+						//PERCORRE O ARRAY DA COMBO QUE POSSUI TODAS AS OPCOES DE CONTAS EXISTENTES E ENVIA PARA METODO PROCURAR DA CLASSE BANCO
+						ContaBancaria conta = banco.procurar(jComboBox1.getItemAt(i));
+
+						//A CADA CONTA DA COMBO BOX ACHADA E SALVA NA VARIAVEL CONTA, EH CHAMADO O METODO MostrarDados 
+						//ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
+						jTextArea1.append(conta.mostrarDados());
+					}
 					
-			for(int i = 0; i < jComboBox1.getItemCount(); i++) {
+					//CASO NAO EXISTA CONTA PARA SER SELECIONADA EXIBE MENSAGEM "Nenhuma conta foi encontrada"
+				} else {
+					
+					throw new Exception() ;
+				}
 				
-				//PERCORRE O ARRAY DA COMBO QUE POSSUI TODAS AS OPCOES DE CONTAS EXISTENTES E ENVIA PARA METODO PROCURAR DA CLASSE BANCO
-				ContaBancaria conta = banco.procurar(jComboBox1.getItemAt(i));
-				
-				//A CADA CONTA DA COMBO BOX ACHADA E SALVA NA VARIAVEL CONTA, EH CHAMADO O METODO MostrarDados 
-				//ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
+
+				//VERIFICA SE O BOTAO NAO ESTA SELECIONADO 
+			} else if (jRadioButton2.isSelected()) {
+
+				//PEGA O VALOR DA COMBO BOX SELECIONADA
+				Long numeroConta = Long.parseLong(jComboBox1.getSelectedItem().toString());
+
+				//ENVIA A CONTA SELECIONADA PARA O METODO PROCURAR DA CLASSE BANCO
+				ContaBancaria conta = banco.procurar(numeroConta);
+
+				//EH CHAMADO O METODO MostrarDados ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
 				jTextArea1.append(conta.mostrarDados());
+
 			}
 			
-			//VERIFICA SE O BOTAO NAO ESTA SELECIONADO 
-		} else if (jRadioButton2.isSelected()) {
-		
-			//PEGA O VALOR DA COMBO BOX SELECIONADA
-			Long numeroConta = Long.parseLong(jComboBox1.getSelectedItem().toString());
-			
-			//ENVIA A CONTA SELECIONADA PARA O METODO PROCURAR DA CLASSE BANCO
-			ContaBancaria conta = banco.procurar(numeroConta);
-			
-			//EH CHAMADO O METODO MostrarDados ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
-			jTextArea1.append(conta.mostrarDados());
-			
+		} catch (Exception e) {
+
+			JOptionPane.showMessageDialog(null, "Nenhuma conta foi encontrada", "Mensagem", getDefaultCloseOperation(), frameIcon);
+
 		}
-		  
+
 
 
 	}//GEN-LAST:event_jButton1ActionPerformed
