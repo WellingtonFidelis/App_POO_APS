@@ -37,6 +37,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
 
 	public void carregarContas(){
 
+		//CARREGA TODAS AS CONTAS CADASTRADAS PARA EXIBIR NA COMBO BOX
 		for (int i = 0; i < contas.size(); i++) {
 			jComboBox1.addItem(contas.get(i).getNumeroConta());
 		}
@@ -169,10 +170,33 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-		Long numeroConta = Long.parseLong(jComboBox1.getSelectedItem().toString());
-
-		banco.procurar(numeroConta);		
-		//jTextArea1.append();   mostra informações no text area
+		//VERIFICA SE O BOTAO SIM ESTA SELECIONADO 
+		if(jRadioButton1.isSelected()) {
+					
+			for(int i = 0; i < jComboBox1.getItemCount(); i++) {
+				
+				//PERCORRE O ARRAY DA COMBO QUE POSSUI TODAS AS OPCOES DE CONTAS EXISTENTES E ENVIA PARA METODO PROCURAR DA CLASSE BANCO
+				ContaBancaria conta = banco.procurar(jComboBox1.getItemAt(i));
+				
+				//A CADA CONTA DA COMBO BOX ACHADA E SALVA NA VARIAVEL CONTA, EH CHAMADO O METODO MostrarDados 
+				//ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
+				jTextArea1.append(conta.mostrarDados());
+			}
+			
+			//VERIFICA SE O BOTAO NAO ESTA SELECIONADO 
+		} else if (jRadioButton2.isSelected()) {
+		
+			//PEGA O VALOR DA COMBO BOX SELECIONADA
+			Long numeroConta = Long.parseLong(jComboBox1.getSelectedItem().toString());
+			
+			//ENVIA A CONTA SELECIONADA PARA O METODO PROCURAR DA CLASSE BANCO
+			ContaBancaria conta = banco.procurar(numeroConta);
+			
+			//EH CHAMADO O METODO MostrarDados ONDE EH EXIBIDA AS INFORMACOES DA CONTA NO CAMPO TEXT AREA DA TELA
+			jTextArea1.append(conta.mostrarDados());
+			
+		}
+		  
 
 
 	}//GEN-LAST:event_jButton1ActionPerformed

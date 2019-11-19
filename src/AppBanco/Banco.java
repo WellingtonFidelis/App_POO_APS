@@ -46,9 +46,22 @@ public class Banco {
 
 	}
 
-	// ***************ACHO QUE APÓS VARRER O ARRAY E FILTRAR AS CONTAS DESEJADAS É NECESSÁRIO CHAMAR mostrarDados()********************
-	public void procurar(Long numero) {
+	public ContaBancaria procurar(Long numero) {
 
+		ContaBancaria conta = null;
+		
+		//PERCORRE O ARRAYLIST DE CONTAS
+		for (int i = 0; i < contas.size(); i++) {
+			
+			//QUANDO ENCONTRA A CONTA DESEJADA RETORNA AS INFORMACOES DELA PARA O A CLASSE RelatorioSaldo
+			if (contas.get(i).getNumeroConta() == numero) {
+			
+				conta = contas.get(i);
+				
+			}
+		}
+		
+		return conta;
 		
 	}
 }
