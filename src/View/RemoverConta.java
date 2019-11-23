@@ -11,7 +11,7 @@ import AppBanco.Banco;
 
 /**
  *
- * @author Jorge
+ * @author 
  */
 public class RemoverConta extends javax.swing.JInternalFrame {
 

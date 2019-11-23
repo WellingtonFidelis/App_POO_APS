@@ -7,7 +7,7 @@ package View;
 
 /**
  *
- * @author Jorge
+ * @author Rafaela and Wellington
  */
 public class BancoSwingOO {
 
