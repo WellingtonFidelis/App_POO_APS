@@ -1,12 +1,13 @@
 package AppBanco;
 
+import View.RelatorioSaldo;
+
 public class ContaCorrente extends ContaBancaria {
-	
+
 	private double taxaDeOperacao;
-	
+
 	//add the constructor
 	public ContaCorrente(long numeroConta, double saldo, double taxaDeOperacao) {	
-		// TODO Verify the tax of operation
 		super (numeroConta, saldo);
 	}
 	//getters and setters
@@ -17,22 +18,25 @@ public class ContaCorrente extends ContaBancaria {
 	public void setTaxaDeOperacao(double taxaDeOperacao) {
 		this.taxaDeOperacao = taxaDeOperacao;
 	}
-	
+
 	// Override of methods from ContaBancaria
 	@Override
 	public void sacar (double valor) {
-		//n�o sei se est� certo esse c�lculo. I don't know if it is right this measure.
+		//nao sei se esta certo esse calculo. I don't know if it is right this measure.
 		setSaldo(getSaldo() - (valor + (taxaDeOperacao*valor)));
 	}
-	
+
 	public void depositar (double valor) {
-		//n�o sei se est� certo esse c�lculo. I don't know if it is right this measure.
+		//nao sei se esta certo esse calculo. I don't know if it is right this measure.
 		setSaldo(getSaldo() + (valor - (taxaDeOperacao*valor)));
 	}
 
 	@Override
-	public void mostrarDados() {
-		System.out.println(getNumeroConta() + "\t" +
-				getSaldo() + "\t"); 		
+	public String mostrarDados() {
+
+		//ALTEREI O RETORNO DO METODO PARA STRING, NAO ACHEI OUTRA FORMA DE FAZER
+		return "\nConta: " + String.valueOf(getNumeroConta()) + 
+				"\nSaldo: R$ " + String.valueOf(getSaldo()) +
+				"\nTaxa: R$ " + String.valueOf(getTaxaDeOperacao() + "\n");
 	}
 }

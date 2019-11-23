@@ -7,7 +7,6 @@ public class ContaPoupanca extends ContaBancaria {
 	//add the constructor
 	public ContaPoupanca(long numeroConta, double saldo, double limite) {
 		super(numeroConta, saldo);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//getters and setters
@@ -30,10 +29,12 @@ public class ContaPoupanca extends ContaBancaria {
 	}
 
 	@Override
-	public void mostrarDados() {
-		System.out.println(getNumeroConta() + "\t" +
-				getSaldo() + "\t" +
-				getLimite()); 
+	public String mostrarDados() {
+
+		//ALTEREI O RETORNO DO METODO PARA STRING, NAO ACHEI OUTRA FORMA DE FAZER
+		return "\nConta: " + String.valueOf(getNumeroConta()) + 
+				"\nSaldo: R$ " + String.valueOf(getSaldo()) +
+				"\nLimite: R$ " + String.valueOf(getLimite() + "\n");
 
 	}
 }
