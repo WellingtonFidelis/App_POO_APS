@@ -171,7 +171,7 @@ public class RelatorioSaldo extends javax.swing.JInternalFrame {
 	}//GEN-LAST:event_jRadioButton2ActionPerformed
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+            jTextArea1.setText(null); // limpa o jTextArea1 sempre que rodar o relatorio.   
 		try {
 			
 			//VERIFICA SE O BOTAO SIM ESTA SELECIONADO 
