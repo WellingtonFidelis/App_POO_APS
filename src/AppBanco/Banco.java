@@ -64,4 +64,23 @@ public class Banco {
 		return conta;
 		
 	}
+        
+       public boolean procurarConta(Long numero) {
+
+        //ContaBancaria conta = null;
+        //PERCORRE O ARRAYLIST DE CONTAS
+        for (int i = 0; i < contas.size(); i++) {
+
+            //QUANDO ENCONTRA A CONTA DESEJADA RETORNA AS INFORMACOES DELA PARA O A CLASSE RelatorioSaldo
+            if (contas.get(i).getNumeroConta() == numero) {
+
+                //conta = contas.get(i);
+                return true;
+
+            }
+        }
+
+        return false;
+
+    }
 }

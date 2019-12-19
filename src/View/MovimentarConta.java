@@ -251,14 +251,23 @@ public class MovimentarConta extends javax.swing.JInternalFrame {
             Long numeroConta = Long.parseLong(jTextField1.getText());
             // utilizo o method procurar() de Banco para encontrar a conta
             banco.procurar(numeroConta);
-            //mostrar no frame um label dizendo OK
-            jlblconfirmacao.setText("OK");            
+            
+            if (banco.procurarConta(numeroConta)) {
+                //mostrar no frame um label dizendo OK
+                jlblconfirmacao.setText("OK");
+                //habilita os campos de sacar e depositar
+                exibirSacarDepositar(false);
+            }            
         }
         catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Insira um numero de conta valido", "MOVCERROR01", getDefaultCloseOperation(), frameIcon);
+            limpaCampos();
+            jlblconfirmacao.setText("");
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Conta inserida não está cadastrada.", "MOVCERROR02", getDefaultCloseOperation(), frameIcon);
+            limpaCampos();
+            jlblconfirmacao.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
